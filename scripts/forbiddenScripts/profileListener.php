@@ -1,13 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['Email'])) {
-    // Usuário não está logado, redireciona para a página de registro
-    header("Location: ../../login.html");
-    exit(); // Importante para interromper a execução do código após o redirecionamento
-} else {
-    // O usuário está logado, permita o acesso ao perfil
-    header("Location: ../../profile.php");
+if (!isset($_SESSION['email'])) {
+    header('Location: ../../sign-in.html');
     exit();
-
+} else {
+    header('Location: ../../account.php');
+    exit();
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-function conectarBanco(): mysqli
+function connectDatabase(): mysqli
 {
     $environmentFile = dirname(__DIR__, 2) . '/.env';
     if (is_readable($environmentFile)) {

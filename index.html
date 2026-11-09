@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,26 +10,26 @@
     <script src="scripts/search-bar.js"></script>
     <script src="scripts/navbar.js"></script>
 
-    <meta name="description" content="Suplementos para acompanhar sua rotina de treino. Explore o catálogo da MS Suplementos.">
-    <title>MS Suplementos | Nutrição esportiva</title>
+    <meta name="description" content="Explore sports nutrition essentials for your training routine at MS Supplements.">
+    <title>MS Supplements | Sports nutrition</title>
 </head>
 
 <body>
-    <!-- Navbar :) -->
+    <!-- Main navigation -->
     <nav class="navbar-bg">
         <input type="checkbox" id="menu-toggle">
         <div class="navbar">
             <section class="navbar-logo">
-                <span><a href="index.html" aria-label="MS Suplementos, início"><img src="img/logoicon.png" alt="MS Suplementos"></a></span>
+                <span><a href="index.html" aria-label="MS Supplements, home"><img src="img/logoicon.png" alt="MS Supplements"></a></span>
             </section>
             <section class="navbar-pages">
                 <label for="menu-toggle" class="menu-icon">&#9776;</label>
                 <ul>
-                    <li class="navbar-item"><a href="#" class="navbar-item-actived">Início</a></li>
-                    <li class="navbar-item"><a href="products-list.html">Produtos</a></li>
-                    <li class="navbar-item"><a href="about-us.html">Sobre</a></li>
-                    <li class="navbar-item"><a href="scripts/forbiddenScripts/profileListener.php" aria-label="Meu perfil"><img src="img/icon-person.jpg" alt=""></a></li>
-                    <li class="navbar-item"><a href="shoppingcart.php" aria-label="Carrinho"><img src="img/cart-icon.png" alt=""></a></li>
+                    <li class="navbar-item"><a href="#" class="navbar-item-active">Home</a></li>
+                    <li class="navbar-item"><a href="catalog.html">Products</a></li>
+                    <li class="navbar-item"><a href="about-us.html">About</a></li>
+                    <li class="navbar-item"><a href="scripts/forbiddenScripts/profileListener.php" aria-label="My account"><img src="img/icon-person.jpg" alt=""></a></li>
+                    <li class="navbar-item"><a href="cart.php" aria-label="Shopping cart"><img src="img/cart-icon.png" alt=""></a></li>
                 </ul>
             </section>
         </div>
@@ -37,159 +37,145 @@
         <div class="menu-overlay" id="menu-overlay"></div>
         <div class="menu">
             <ul>
-                <li><a href="#" class="navbar-item-actived">Início</a></li>
-                <li><a href="products-list.html">Produtos</a></li>
-                <li><a href="about-us.html">Sobre</a></li>
-                <li><a href="scripts/forbiddenScripts/profileListener.php"><img src="img/icon-person.jpg" alt="error!">Perfil</a></li>
-                <li><a href="shoppingcart.php"><img src="img/cart-icon.png" alt="error!"></a></li>
+                <li><a href="#" class="navbar-item-active">Home</a></li>
+                <li><a href="catalog.html">Products</a></li>
+                <li><a href="about-us.html">About</a></li>
+                <li><a href="scripts/forbiddenScripts/profileListener.php"><img src="img/icon-person.jpg" alt="">Account</a></li>
+                <li><a href="cart.php" aria-label="Shopping cart"><img src="img/cart-icon.png" alt=""></a></li>
             </ul>
         </div>
     </nav>
-    <!-- Separator bar :) -->
+    <!-- Shipping offer -->
     <section class="separator-bar">
-        <span>Frete grátis a partir de R$ 100</span>
+        <span>Free shipping on orders over R$ 100</span>
     </section>
-    <!-- Initial-Section -->
+    <!-- Hero section -->
     <section class="initial-section">
         <div class="initial-section-grid">
             <div class="initial-section-text">
-                <span class="eyebrow">MS SUPLEMENTOS</span>
-                <h1>Seu treino pede <em>consistência.</em></h1>
-                <p>Suplementos para acompanhar sua rotina, do primeiro treino ao próximo objetivo.</p>
-                <a class="hero-link" href="products-list.html">Explorar produtos <span aria-hidden="true">&rarr;</span></a>
+                <span class="eyebrow">MS SUPPLEMENTS</span>
+                <h1>Train with <em>purpose.</em></h1>
+                <p>Thoughtful sports nutrition for every step of your training journey.</p>
+                <a class="hero-link" href="catalog.html">Shop supplements <span aria-hidden="true">&rarr;</span></a>
             </div>
             <div class="initial-section-img">
-                <img src="img/creatina-usar.jpeg" alt="Preparo de suplemento em uma coqueteleira">
+                <img src="img/creatine-preparation.jpeg" alt="Supplement powder being prepared in a shaker">
             </div>
         </div>
     </section>
-    <!-- Search Bar -->
-    <nav class="search-bar" aria-label="Buscar produtos">
+    <!-- Product search -->
+    <nav class="search-bar" aria-label="Search products">
         <div class="search-bar-grid">
-            <label for="search-bar-item">O que você procura?</label>
+            <label for="search-bar-item">What are you looking for?</label>
             <div class="search-bar-wrapper">
-                <input type="search" id="search-bar-item" class="search-bar-item" placeholder="Ex.: creatina, whey..." autocomplete="off" aria-controls="search-results">
+                <input type="search" id="search-bar-item" class="search-bar-item" placeholder="Try creatine or whey protein" autocomplete="off" aria-controls="search-results">
                 <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
             </div>
-            <ul id="search-results" aria-label="Produtos encontrados"></ul>
+            <ul id="search-results" aria-label="Search results"></ul>
             <p id="search-status" class="search-status" aria-live="polite"></p>
         </div>
     </nav>
-    <!-- Initial Page Products -->
+    <!-- Featured products -->
     <section class="products" aria-labelledby="featured-title">
         <div class="products-heading">
-            <div><span class="eyebrow">ESCOLHAS PARA O SEU TREINO</span>
-                <h2 id="featured-title">Mais procurados</h2>
-            </div><a href="products-list.html">Ver catálogo completo <span aria-hidden="true">&rarr;</span></a>
+            <div><span class="eyebrow">PICKS FOR YOUR TRAINING ROUTINE</span>
+                <h2 id="featured-title">Popular picks</h2>
+            </div><a href="catalog.html">Browse all products <span aria-hidden="true">&rarr;</span></a>
         </div>
-        <nav aria-label="Produtos em destaque">
+        <nav aria-label="Featured products">
             <ul class="products-grid">
                 <li class="products-item">
-                    <a href="albumina-page.html">
-                        <img src="img/albumina.png" alt="Embalagem de albumina natural"><br>
-                        <span class="products-item-title">Albumina Natural</span><br>
-                        <span class="products-item-price">R$84,90</span>
-                        <span class="product-card-action">Ver produto <span aria-hidden="true">&rarr;</span></span>
+                    <a href="albumin-page.html">
+                        <img src="img/albumin.png" alt="Bag of natural egg white protein"><br>
+                        <span class="products-item-title">Egg White Protein</span><br>
+                        <span class="products-item-price">R$ 84.90</span>
+                        <span class="product-card-action">View product <span aria-hidden="true">&rarr;</span></span>
                     </a>
                 </li>
                 <li class="products-item">
                     <a href="bcaa-page.html">
-                        <img src="img/bcaa.jpg" alt="Embalagem de BCAA em pó"><br>
-                        <span class="products-item-title">BCAA em Pó</span><br>
-                        <span class="products-item-price">R$44,90</span>
-                        <span class="product-card-action">Ver produto <span aria-hidden="true">&rarr;</span></span>
+                        <img src="img/bcaa.jpg" alt="Container of BCAA powder"><br>
+                        <span class="products-item-title">BCAA Powder</span><br>
+                        <span class="products-item-price">R$ 44.90</span>
+                        <span class="product-card-action">View product <span aria-hidden="true">&rarr;</span></span>
                     </a>
                 </li>
                 <li class="products-item">
-                    <a href="creatina-page.html">
-                        <img src="img/creatina.png" alt="Embalagem de creatina monohidratada"><br>
-                        <span class="products-item-title">Creatina Monohidratada</span><br>
-                        <span class="products-item-price">R$64,90</span>
-                        <span class="product-card-action">Ver produto <span aria-hidden="true">&rarr;</span></span>
+                    <a href="creatine-page.html">
+                        <img src="img/creatine.png" alt="Container of creatine monohydrate"><br>
+                        <span class="products-item-title">Creatine Monohydrate</span><br>
+                        <span class="products-item-price">R$ 64.90</span>
+                        <span class="product-card-action">View product <span aria-hidden="true">&rarr;</span></span>
                     </a>
                 </li>
                 <li class="products-item">
-                    <a href="glutamina-page.html">
-                        <img src="img/glutamina.png" alt="Embalagem de glutamina"><br>
-                        <span class="products-item-title">Glutamina</span><br>
-                        <span class="products-item-price">R$49,90</span>
-                        <span class="product-card-action">Ver produto <span aria-hidden="true">&rarr;</span></span>
+                    <a href="glutamine-page.html">
+                        <img src="img/glutamine.png" alt="Container of glutamine powder"><br>
+                        <span class="products-item-title">Glutamine</span><br>
+                        <span class="products-item-price">R$ 49.90</span>
+                        <span class="product-card-action">View product <span aria-hidden="true">&rarr;</span></span>
                     </a>
                 </li>
                 <li class="products-item">
-                    <a href="termogenico-page.html">
-                        <img src="img/termogenico.jpg" alt="Embalagem de termogênico natural"><br>
-                        <span class="products-item-title">Termogênico Natural</span><br>
-                        <span class="products-item-price">R$49,90</span>
-                        <span class="product-card-action">Ver produto <span aria-hidden="true">&rarr;</span></span>
+                    <a href="thermogenic-page.html">
+                        <img src="img/thermogenic.jpg" alt="Container of thermogenic supplement"><br>
+                        <span class="products-item-title">Thermogenic Supplement</span><br>
+                        <span class="products-item-price">R$ 49.90</span>
+                        <span class="product-card-action">View product <span aria-hidden="true">&rarr;</span></span>
                     </a>
                 </li>
                 <li class="products-item">
                     <a href="whey-page.html">
-                        <img src="img/whey.webp" alt="Embalagem de whey protein concentrado"><br>
-                        <span class="products-item-title">Whey Protein Concentrado</span><br>
-                        <span class="products-item-price">R$99,90</span>
-                        <span class="product-card-action">Ver produto <span aria-hidden="true">&rarr;</span></span>
+                        <img src="img/whey.webp" alt="Bag of whey protein"><br>
+                        <span class="products-item-title">Whey Protein Concentrate</span><br>
+                        <span class="products-item-price">R$ 99.90</span>
+                        <span class="product-card-action">View product <span aria-hidden="true">&rarr;</span></span>
                     </a>
                 </li>
             </ul>
         </nav>
     </section>
-    <!-- Types of suplements -->
-    <section class="suplements-section" id="suplements-section">
-        <div class="suplements-section-grid-container">
-            <div class="suplements-section-grid-item">
-                <img src="img/creatina-usar.jpeg" alt="Creatina em pó e acessórios de treino">
+    <!-- Supplement education -->
+    <section class="supplement-feature-section" id="supplement-feature-section">
+        <div class="supplement-feature-grid">
+            <div class="supplement-feature-item">
+                <img src="img/creatine-preparation.jpeg" alt="Supplement powder being prepared in a shaker">
             </div>
-            <div class="suplements-section-grid-item">
-                <h3>Creatina</h3>
+            <div class="supplement-feature-item">
+                <h3>Creatine</h3>
                 <p>
-                    A creatina é um composto natural encontrado nos músculos,
-                    usado como suplemento por atletas. Sua principal função é
-                    fornecer energia rápida durante atividades intensas,
-                    promovendo aumento de força e massa muscular.
-                    A suplementação de creatina é segura e comum,
-                    mas a orientação profissional é essencial antes de iniciar.
+                    Creatine is a compound naturally found in muscle and is commonly
+                    used to support short, high-intensity training. Ask a qualified
+                    health professional whether supplementation is right for you.
                 </p>
             </div>
-            <div class="suplements-section-grid-item">
-                <span>Whey</span>
+            <div class="supplement-feature-item">
+                <span>Whey protein</span>
                 <p>
-                    O whey protein, derivado do soro do leite, é um suplemento
-                    popular entre os praticantes de exercícios. Rico em proteínas
-                    de alta qualidade, fornece aminoácidos essenciais, promovendo
-                    a síntese proteica, recuperação muscular e desenvolvimento da
-                    massa magra. Utilizado após treinos, é conveniente e eficaz,
-                    mas a orientação profissional é fundamental para sua adequada
-                    incorporação à dieta.
+                    Whey protein comes from milk and offers a convenient source of
+                    protein. Check the product label and consider professional
+                    guidance when choosing supplements for your diet.
                 </p>
             </div>
-            <div class="suplements-section-grid-item">
-                <img src="img/whey-usando.png" alt="Pessoa preparando whey protein em uma coqueteleira">
+            <div class="supplement-feature-item">
+                <img src="img/whey-in-use.png" alt="Measuring tape and protein powder on a table">
             </div>
     </section>
-    <!-- Info section -->
+    <!-- Store information -->
     <section class="info-section">
         <div class="info-section-grid">
             <div class="info-section-item">
                 <img src="img/truck-icon.png" alt="">
-                <span>Entrega</span>
+                <span>Shipping</span>
                 <p>
-                    Realizamos entregas rápidas e seguras para
-                    todo o Brasil. Garantimos que seus
-                    suplementos chegarão em perfeitas
-                    condições.
+                    We deliver throughout Brazil. Free shipping is available on orders over R$ 100.
                 </p>
             </div>
             <div class="info-section-item">
                 <img src="img/reimbursement-icon.png" alt="">
-                <span>Política de Reembolso</span>
+                <span>Returns and refunds</span>
                 <p>
-                    Na MS Suplementos, valorizamos a
-                    satisfação do cliente. Se por algum motivo
-                    você não estiver satisfeito com o seu pedido,
-                    oferecemos a opção de reembolso. Entre em
-                    contato conosco para obter mais informações.
+                    Need help with an order? Contact our team to learn about return and refund options.
                 </p>
             </div>
         </div>
@@ -202,8 +188,8 @@
             </div>
             <hr>
             <div class="footer-item">
-                <span>CNPJ: 00.033.755/0001-92</span><br>
-                <span>TELEFONE: (12) 99731-4956</span><br>
+                <span>Business ID: 00.033.755/0001-92</span><br>
+                <span>Phone: +55 (12) 99731-4956</span><br>
                 <span><a href="https://www.instagram.com/escolamaximussjc/" aria-label="Instagram"><img src="img/instagram-icon.png" alt=""></a><a href="https://twitter.com/escola_maximus" aria-label="Twitter"><img src="img/twitter-icon.png" alt=""></a></span>
             </div>
         </div>

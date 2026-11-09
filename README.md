@@ -1,57 +1,62 @@
-# MS Suplementos
+# MS Supplements
 
-Loja virtual de suplementos esportivos desenvolvida como projeto acadêmico. A aplicação reúne catálogo, páginas de produto, busca, carrinho e fluxos demonstrativos de conta e checkout.
+An academic sports nutrition storefront featuring a product catalog, product details, search, a browser-based cart, and demo account and checkout flows.
 
-## Visão geral
+## Features
 
-- Interface em HTML, CSS e JavaScript, em português brasileiro e adaptada para telas menores.
-- Catálogo com busca por nome de produto.
-- Carrinho mantido no navegador com `localStorage`.
-- Cadastro e login em PHP com MySQL.
-- Páginas de produto para albumina, BCAA, creatina, glutamina, termogênico e whey protein.
+- Responsive storefront built with HTML, CSS, and JavaScript.
+- Product catalog with live search.
+- Shopping cart stored in `localStorage`.
+- PHP registration and sign-in backed by MySQL.
+- Product pages for egg white protein, BCAA, creatine, glutamine, thermogenic supplements, and whey protein.
 
-## Tecnologias
+## Tech stack
 
 HTML5 · CSS3 · JavaScript · PHP · MySQL
 
-## Executar localmente
+## Run locally
 
-1. Instale PHP com as extensões `mysqli` e `session`, além do MySQL.
-2. Copie `.env.example` para `.env` e informe as credenciais do seu MySQL. O conector PHP lê esse arquivo local, que é ignorado pelo Git.
-3. Crie o banco e a tabela executando [`scripts/registerScripts/Users.sql`](scripts/registerScripts/Users.sql) no MySQL.
-4. Inicie o servidor na raiz do projeto:
+1. Install PHP with the `mysqli` extension and install MySQL.
+2. Copy `.env.example` to `.env` and add your local database credentials. The `.env` file is ignored by Git.
+3. Create the database and tables by running [`database/schema.sql`](database/schema.sql) in MySQL.
+4. Start the PHP development server from the project root:
 
    ```bash
    php -S localhost:8000
    ```
 
-5. Acesse <http://localhost:8000>.
+5. Open <http://localhost:8000>.
 
-As páginas estáticas podem ser abertas diretamente, mas cadastro, login, perfil e carrinho protegido precisam ser servidos por PHP e de uma conexão MySQL válida.
+Account registration and sign-in require PHP and a working MySQL connection. Static pages can also be previewed in a browser.
 
-## Estrutura
+## Project structure
 
 ```text
 .
-├── index.html                 # Página inicial
-├── products-list.html         # Catálogo e busca
-├── *-page.html                # Páginas dos produtos
-├── shoppingcart.php           # Carrinho
-├── pagamento.html             # Checkout demonstrativo
+├── index.html                    # Storefront home page
+├── catalog.html                  # Product catalog and search
+├── *-page.html                   # Product detail pages
+├── sign-in.html / sign-up.html   # Account forms
+├── account.php                   # Signed-in account details
+├── cart.php                      # Shopping cart
+├── checkout.html                 # Demo checkout
+├── database/
+│   ├── schema.sql                # Fresh-install database schema
+│   └── migrations/               # Database migrations
 ├── scripts/
-│   ├── style.css              # Estilos compartilhados
-│   ├── search-bar.js          # Busca do catálogo
-│   ├── shoppingcart.js        # Carrinho no navegador
-│   └── registerScripts/       # Cadastro, login e esquema MySQL
-└── img/                       # Imagens da loja
+│   ├── style.css                 # Shared styles
+│   ├── cart.js                   # Browser cart behavior
+│   ├── search-bar.js             # Catalog search
+│   └── registerScripts/          # Account and form scripts
+└── img/                          # Store imagery and icons
 ```
 
-## Observações
+## Notes
 
-- O checkout é apenas demonstrativo: não processa pagamentos. Não informe dados reais de cartão.
-- Configure as credenciais do banco por variáveis de ambiente; nunca envie `.env` ao Git.
-- O catálogo e os valores são exemplos do projeto acadêmico.
+- Checkout is a visual demo and does not process payments. Do not enter real payment details.
+- Configure database credentials with environment variables. Never commit `.env`.
+- Product listings and prices are sample content for an academic project.
 
-## Licença
+## License
 
-Nenhuma licença de uso foi definida. Consulte o autor antes de reutilizar o código ou os materiais visuais.
+No license has been defined. Contact the author before reusing the source code or visual assets.

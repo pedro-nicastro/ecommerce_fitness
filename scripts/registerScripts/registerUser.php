@@ -3,42 +3,42 @@ require_once __DIR__ . '/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    exit('Método não permitido.');
+    exit('Method not allowed.');
 }
 
-$nome = trim($_POST['Nome'] ?? '');
-$username = trim($_POST['UserName'] ?? '');
-$email = filter_var(trim($_POST['Email'] ?? ''), FILTER_VALIDATE_EMAIL);
-$cpf = trim($_POST['CPF'] ?? '');
-$senha = $_POST['Senha'] ?? '';
+$name = trim($_POST['name'] ?? '');
+$username = trim($_POST['username'] ?? '');
+$email = filter_var(trim($_POST['email'] ?? ''), FILTER_VALIDATE_EMAIL);
+$taxId = trim($_POST['tax_id'] ?? '');
+$password = $_POST['password'] ?? '';
 
-if ($nome === '' || $username === '' || !$email || $cpf === '' || $senha === '') {
+if ($name === '' || $username === '' || !$email || $taxId === '' || $password === '') {
     http_response_code(400);
-    exit('Preencha todos os campos obrigatórios com valores válidos.');
+    exit('Please complete all required fields with valid information.');
 }
 
 try {
-    $conn = conectarBanco();
-    $check = $conn->prepare('SELECT ID FROM usuarios WHERE mail = ?');
+    $connection = connectDatabase();
+    $check = $connection->prepare('SELECT id FROM users WHERE email = ?');
     $check->bind_param('s', $email);
     $check->execute();
 
     if ($check->get_result()->num_rows > 0) {
         http_response_code(409);
-        exit('Este endereço de e-mail já está em uso.');
+        exit('This email address is already in use.');
     }
 
-    $hash = password_hash($senha, PASSWORD_DEFAULT);
-    $insert = $conn->prepare(
-        'INSERT INTO usuarios (nome, username, mail, pass, cpf) VALUES (?, ?, ?, ?, ?)'
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+    $insert = $connection->prepare(
+        'INSERT INTO users (name, username, email, password_hash, tax_id) VALUES (?, ?, ?, ?, ?)'
     );
-    $insert->bind_param('sssss', $nome, $username, $email, $hash, $cpf);
+    $insert->bind_param('sssss', $name, $username, $email, $passwordHash, $taxId);
     $insert->execute();
 
-    header('Location: ../../login.html');
+    header('Location: ../../sign-in.html');
     exit();
 } catch (mysqli_sql_exception $error) {
     error_log($error->getMessage());
     http_response_code(500);
-    exit('Não foi possível concluir o cadastro agora. Tente novamente.');
+    exit('We could not complete your registration. Please try again.');
 }
