@@ -6,7 +6,7 @@ if (!isset($_SESSION['Email'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,15 +50,24 @@ if (!isset($_SESSION['Email'])) {
     </nav>
     <!-- Separator bar :) -->
     <section class="separator-bar">
-        <span>Frete grátis a partir de R$100</span>
+        <span>Frete grátis a partir de R$ 100</span>
     </section>
     <!-- Shopping Section -->
     <section class="shopping-section">
-        <div id="carrinho"></div>
-        <div id="carrinho-vazio" style="display: none;">Carrinho vazio</div>
+        <div class="cart-heading">
+            <span class="eyebrow">SEU PEDIDO</span>
+            <h1>Meu carrinho</h1>
+            <p>Confira os itens antes de continuar.</p>
+        </div>
+        <div id="carrinho" aria-live="polite"></div>
+        <div id="carrinho-resumo"></div>
+        <div id="carrinho-vazio" hidden>
+            <h2>Seu carrinho está vazio</h2>
+            <p>Explore o catálogo e encontre o que acompanha sua rotina.</p>
+            <a href="products-list.html">Ver produtos <span aria-hidden="true">&rarr;</span></a>
         </div>
     </section>
-    <a href="pagamento.html" class="btn-continuar-compra">Continuar compra</a>
+    <a href="pagamento.html" class="btn-continuar-compra" id="btn-continuar-compra" hidden>Continuar para entrega <span aria-hidden="true">&rarr;</span></a>
     <!-- Footer -->
     <footer>
         <div class="footer-grid">

@@ -1,45 +1,42 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Certifique-se de chamar session_start() no início do código.
 session_start();
+require_once __DIR__ . '/database.php';
 
-$host = "localhost";
-$username = "root";
-$password = "0000";
-$database = "Clients";
-
-$conn = mysqli_connect($host, $username, $password, $database);
-
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-};
-
-$email = mysqli_real_escape_string($conn, $_POST['Email']);
-$senha = $_POST['Senha'];
-
-$sql = "SELECT * FROM usuarios WHERE mail = '$email'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $hashed_password = $row['pass'];
-
-    if (password_verify($senha, $hashed_password)) { 
-        // Armazene o email na sessão
-        $_SESSION['Email'] = $email;
-        $_SESSION['Nome'] = $name;
-        $_SESSION['UserName'] = $username;
-        $_SESSION['Cpf'] = $cpf;
-        header("Location:../../index.html");
-        exit(); // Importante para evitar que o código continue executando após o redirecionamento.
-    } else {
-        header("Location:../../login.html");
-        echo "Senha incorreta.";
-    }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    exit('Método não permitido.');
 }
 
-$conn->close();
-?>
+$email = filter_var(trim($_POST['Email'] ?? ''), FILTER_VALIDATE_EMAIL);
+$senha = $_POST['Senha'] ?? '';
+
+if (!$email || $senha === '') {
+    header('Location: ../../login.html');
+    exit();
+}
+
+try {
+    $conn = conectarBanco();
+    $query = $conn->prepare('SELECT nome, username, mail, pass, cpf FROM usuarios WHERE mail = ?');
+    $query->bind_param('s', $email);
+    $query->execute();
+    $user = $query->get_result()->fetch_assoc();
+
+    if (!$user || !password_verify($senha, $user['pass'])) {
+        header('Location: ../../login.html');
+        exit();
+    }
+
+    session_regenerate_id(true);
+    $_SESSION['Email'] = $user['mail'];
+    $_SESSION['Nome'] = $user['nome'];
+    $_SESSION['UserName'] = $user['username'];
+    $_SESSION['Cpf'] = $user['cpf'];
+
+    header('Location: ../../index.html');
+    exit();
+} catch (mysqli_sql_exception $error) {
+    error_log($error->getMessage());
+    http_response_code(500);
+    exit('Não foi possível entrar agora. Tente novamente.');
+}

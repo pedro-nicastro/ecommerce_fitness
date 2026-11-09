@@ -1,4 +1,5 @@
 let carrinho = [];
+const moeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
 function adicionarAoCarrinho(nome, preco, imagem) {
     carrinho.push({ nome, preco, imagem });
@@ -11,39 +12,58 @@ function removerDoCarrinho(index) {
 }
 
 function exibirCarrinho() {
-    const carrinhoContainer = document.getElementById('carrinho');
-    carrinhoContainer.innerHTML = '';
+    const container = document.getElementById('carrinho');
+    if (!container) return;
 
-    if (carrinho.length === 0) {
-        const carrinhoVazio = document.getElementById('carrinho-vazio');
-        carrinhoVazio.style.display = 'block';
-    } else {
-        carrinho.forEach((produto, index) => {
-            const produtoDiv = criarElementoProduto(produto, index);
-            carrinhoContainer.appendChild(produtoDiv);
-        });
-        const carrinhoVazio = document.getElementById('carrinho-vazio');
-        carrinhoVazio.style.display = 'none';
-    }
-}
+    const emptyState = document.getElementById('carrinho-vazio');
+    const summary = document.getElementById('carrinho-resumo');
+    const continueLink = document.getElementById('btn-continuar-compra');
+    container.replaceChildren();
+    summary.replaceChildren();
 
-function criarElementoProduto(produto, index) {
-    const produtoDiv = document.createElement('div');
-    produtoDiv.classList.add('div-produtos');
+    const isEmpty = carrinho.length === 0;
+    emptyState.hidden = !isEmpty;
+    continueLink.hidden = isEmpty;
 
-    produtoDiv.innerHTML = `
-        <div class="div-left">
-            <img src="${produto.imagem}" alt="${produto.nome}">
-        </div>
-        <div class="div-right">
-            <h3 class="nome-do-produto">${produto.nome}</h3>
-            <p class="preço-do-produto">R$ ${produto.preco.toFixed(2)}</p>
-            <button onclick="removerDoCarrinho(${index})" class="btn-excluir">Excluir</button>
-        </div>
+    if (isEmpty) return;
 
-    `;
+    carrinho.forEach((produto, index) => {
+        const row = document.createElement('article');
+        row.className = 'div-produtos';
 
-    return produtoDiv;
+        const image = document.createElement('img');
+        image.src = produto.imagem;
+        image.alt = `Embalagem de ${produto.nome}`;
+
+        const details = document.createElement('div');
+        details.className = 'div-right';
+
+        const title = document.createElement('h2');
+        title.className = 'nome-do-produto';
+        title.textContent = produto.nome;
+
+        const price = document.createElement('p');
+        price.className = 'preco-do-produto';
+        price.textContent = moeda.format(Number(produto.preco));
+
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.className = 'btn-excluir';
+        removeButton.textContent = 'Remover';
+        removeButton.setAttribute('aria-label', `Remover ${produto.nome} do carrinho`);
+        removeButton.addEventListener('click', () => removerDoCarrinho(index));
+
+        details.append(title, price, removeButton);
+        row.append(image, details);
+        container.appendChild(row);
+    });
+
+    const total = carrinho.reduce((sum, produto) => sum + Number(produto.preco), 0);
+    const summaryLabel = document.createElement('span');
+    summaryLabel.textContent = `Subtotal (${carrinho.length} ${carrinho.length === 1 ? 'item' : 'itens'})`;
+    const summaryTotal = document.createElement('strong');
+    summaryTotal.textContent = moeda.format(total);
+    summary.append(summaryLabel, summaryTotal);
 }
 
 function atualizarCarrinho() {
@@ -51,10 +71,12 @@ function atualizarCarrinho() {
     exibirCarrinho();
 }
 
-window.addEventListener('load', () => {
-    const carrinhoArmazenado = localStorage.getItem('carrinho');
-    if (carrinhoArmazenado) {
-        carrinho = JSON.parse(carrinhoArmazenado);
+window.addEventListener('DOMContentLoaded', () => {
+    try {
+        carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
+        if (!Array.isArray(carrinho)) carrinho = [];
+    } catch {
+        carrinho = [];
     }
     exibirCarrinho();
 });

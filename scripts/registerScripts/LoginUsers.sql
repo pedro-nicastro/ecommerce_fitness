@@ -1,10 +1,16 @@
-create database users;
-use users;
-create table usuarios(
-ID INT PRIMARY KEY AUTO_INCREMENT,
-nome varchar (255),
-pass varchar(255),
-cpf varchar(50),
-mail varchar(255) not null
+-- Compatibility copy of the canonical schema in Users.sql.
 
+CREATE DATABASE IF NOT EXISTS clients
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE clients;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  pass VARCHAR(255) NOT NULL,
+  cpf VARCHAR(50) NOT NULL,
+  mail VARCHAR(255) NOT NULL UNIQUE
 );
