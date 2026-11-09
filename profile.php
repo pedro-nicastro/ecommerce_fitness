@@ -4,33 +4,28 @@ if (!isset($_SESSION['Email'])) {
     header("Location: login.html");
     exit();
 }
-
-$host = "localhost";
-$username = "root";
-$password = "0000";
-$database = "clients";
-
-$conn = mysqli_connect($host, $username, $password, $database);
+require_once __DIR__ . '/scripts/registerScripts/database.php';
 
 $email = $_SESSION['Email'];
-// Consulta SQL para buscar as informações do usuário
-$sql = "SELECT nome, username, mail, cpf FROM usuarios WHERE mail = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email);
+$conn = conectarBanco();
+$stmt = $conn->prepare('SELECT nome, username, mail, cpf FROM usuarios WHERE mail = ?');
+$stmt->bind_param('s', $email);
 $stmt->execute();
 $stmt->bind_result($nome, $username, $email, $cpf);
-
-// Buscar os resultados da consulta
 $stmt->fetch();
 $stmt->close();
+$conn->close();
+
+$escapeHtml = static fn ($value) => htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="scripts/style.css">
-    <title>LOGO</title>
+    <title>Minha conta | MS Suplementos</title>
 </head>
 <body>
     <!-- Navbar :) -->
@@ -70,11 +65,11 @@ $stmt->close();
                 <h2>Dados da conta</h2>
                 <div class="profile-section-div">
                     <div class="profile-left">Usuário</div>
-                    <span><?php echo $username; ?></span>
+                    <span><?php echo $escapeHtml($username); ?></span>
                 </div>
                 <div class="profile-section-div-2">
                     <div class="profile-left">Email</div>
-                    <span><?php echo $email; ?></span>
+                    <span><?php echo $escapeHtml($email); ?></span>
                 </div>
             </div>
             <br>
@@ -85,11 +80,11 @@ $stmt->close();
                 <h1 style="margin-bottom: 10px;">Dados Pessoais</h1>
                 <div class="profile-section-div">
                     <div class="profile-left">Nome Completo</div>
-                    <span><?php echo $nome; ?></span>
+                    <span><?php echo $escapeHtml($nome); ?></span>
                 </div>
                 <div class="profile-section-div-4">
                     <div class="profile-left">Documento</div>
-                    <span><?php echo $cpf; ?></span>
+                    <span><?php echo $escapeHtml($cpf); ?></span>
                 </div>
             </div>
             <br>
