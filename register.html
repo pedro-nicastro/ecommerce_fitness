@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scripts/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="scripts/navbar.js"></script>
+    <script src="scripts/registerScripts/cpf-listener.js"></script>
+    <script src="scripts/registerScripts/pass-listener.js"></script>   
+    <script src="scripts/registerScripts/mail-listener.js"></script> 
+    <script src="scripts/registerScripts/registerUser.php"></script>
+
+    <title>LOGO</title>
+</head>
+<body>
+   <!-- Navbar :) -->
+    <nav class="navbar-bg">
+        <input type="checkbox" id="menu-toggle">
+        <div class="navbar">
+            <section class="navbar-logo">
+                <span><a href="index.html"><img src="img/logoicon.png" alt="error!"></a></span>
+            </section>
+            <section class="navbar-pages">
+                <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                <ul>
+                    <li class="navbar-item"><a href="index.html" class="navbar-item-actived">Início</a></li>
+                    <li class="navbar-item"><a href="products-list.html">Produtos</a></li>
+                    <li class="navbar-item"><a href="about-us.html">Sobre</a></li>
+                    <li class="navbar-item"><a href="scripts/forbiddenScripts/profileListener.php"><img src="img/icon-person.jpg" alt="error!"></a></li>
+                    <li class="navbar-item"><a href="shoppingcart.php"><img src="img/cart-icon.png" alt="error!"></a></li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="menu-overlay" id="menu-overlay"></div>
+        <div class="menu">
+            <ul>
+                <li><a href="#" class="navbar-item-actived">Início</a></li>
+                <li><a href="products-list.html">Produtos</a></li>
+                <li><a href="about-us.html">Sobre</a></li>
+                <li><a href="scripts/forbiddenScripts/profileListener.php"><img src="img/icon-person.jpg" alt="error!">Perfil</a></li>
+                <li><a href="shoppingcart.php"><img src="img/cart-icon.png" alt="error!"></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Register Section -->
+    <section class="contact-section">
+        <div class="contact-section-grid">
+            <div class="contact-section-item">
+                <img src="img/logo.png" alt="">
+            </div>
+            <form class="contact-section-item" action="scripts/registerScripts/registerUser.php" method="POST">
+                <h2>Cadastre-se</h2>
+                <input type="text" id="name" name="Nome" placeholder="Seu Nome Completo" required>
+                <input type="text" id="user" name="UserName" placeholder="Seu Nome de Usuário"required>
+                <input type="text" id="cpf" name="CPF" placeholder="Seu CPF" onblur="cpfListener(this.value)" required>
+                <input type="password" id="pass" name="Senha" placeholder="Sua Senha">
+                <input type="password" id="pass-listener" name="Confirmando senha" placeholder="Confirme sua Senha" onblur="checkPassword()" required>
+                <input type="email" id="email" name="Email" placeholder="Seu email" onblur="checkMail()" required>
+                <input type="submit" value="Cadastre-se" class="contact-section-item-btn"  onclick="">
+                <a href="login.html">Já possuo uma conta!</a>
+                <span id="message-cpf"></span><br>
+                <span id="message-pass"></span><br>
+                <span id="message-mail"></span><br>
+            </form>
+        </div>
+
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-item">
+                <span><a href="#"><img class="logofooter" src="img/logopng.png" alt=""></a></span>
+            </div>
+            <hr>
+            <div class="footer-item">
+                <span>CNPJ: 00.033.755/0001-92</span><br>
+                <span>TELEFONE: (12) 99731-4956</span><br>
+                <span><a href="https://www.instagram.com/escolamaximussjc/"><img src="img/instagram-icon.png" alt="error!"></a><a href="https://twitter.com/escola_maximus"><img src="img/twitter-icon.png" alt="error!"></a></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

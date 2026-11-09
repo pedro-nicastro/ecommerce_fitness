@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scripts/style.css">
+    <script src="scripts/navbar.js"></script>
+    <title>LOGO</title>
+</head>
+<body>
+    <!-- Navbar :) -->
+    <nav class="navbar-bg">
+        <input type="checkbox" id="menu-toggle">
+        <div class="navbar">
+            <section class="navbar-logo">
+                <span><a href="index.html"><img src="img/logoicon.png" alt="error!"></a></span>
+            </section>
+            <section class="navbar-pages">
+                <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                <ul>
+                    <li class="navbar-item"><a href="index.html">Início</a></li>
+                    <li class="navbar-item"><a href="products-list.html">Produtos</a></li>
+                    <li class="navbar-item"><a href="#"  class="navbar-item-actived">Sobre</a></li>
+                    <li class="navbar-item"><a href="scripts/forbiddenScripts/profileListener.php"><img src="img/icon-person.jpg" alt="error!"></a></li>
+                    <li class="navbar-item"><a href="shoppingcart.php"><img src="img/cart-icon.png" alt="error!"></a></li>
+                </ul>
+            </section>
+        </div>
+    
+        <div class="menu-overlay" id="menu-overlay"></div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="products-list.html">Produtos</a></li>
+                <li><a href="#"  class="navbar-item-actived">Sobre</a></li>
+                <li><a href="scripts/forbiddenScripts/profileListener.php"><img src="img/icon-person.jpg" alt="error!">Perfil</a></li>
+                <li><a href="shoppingcart.php"><img src="img/cart-icon.png" alt="error!"></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Separator Bar -->
+    <section class="separator-bar">
+        <span>Frete grátis a partir de R$100</span>
+    </section>
+    <!-- Abaut Us section -->
+    <section class="about-section">
+        <div class="about-section-grid">
+            <div class="about-section-text">
+                <span>Sobre Nós</span>
+                <p>
+                    Somos a MS Suplementos, uma loja
+                    virtual especializada em suplementos de
+                    qualidade. Nosso objetivo é oferecer produtos
+                    que contribuam para o seu bem-estar e
+                    melhoria do desempenho físico. Conte
+                    conosco para encontrar os melhores
+                    suplementos para suas necessidades.</p>
+            </div>
+            <div class="about-section-image">
+                <img src="img/grupo2.png" alt="error!">
+            </div>
+        </div>
+    </section>
+    <!-- Info Section -->
+    <section class="info-section-model2">
+        <div class="info-section-model2-grid">
+            <div class="info-section-model2-item">
+                <p>
+                    Clicando aqui, você encontrará informações sobre os dois principais tipos
+                    de suplementos disponíveis em nossa loja virtual. Saiba como a creatina e o
+                    whey podem auxiliar no seu desempenho físico e alcance seus objetivos de 
+                    forma saudável.
+                </p>
+                <button class="info-section-model2-btn"><a href="index.html#suplements-section">Ver Mais</a></button>
+            </div>
+        </div>
+    </section>
+    <!-- Stars Section -->
+    <section class="stars-section">
+        <div class="stars-section-grid">
+            <div class="stars-section-item">
+                <h2>Conheça Nossa<br> Equipe</h2>
+            </div>
+            <div class="stars-section-item-images">
+                <div>
+                    <img src="img/Pedro.png" alt="error!">
+                    <h3>Pedro</h3>
+                    <span>CEO</span>
+                </div>
+                <div>
+                    <img src="img/gaybriel.jpg" alt="error!">
+                    <h3>Gabriel</h3>
+                    <span>CEO</span>
+                </div>
+                <div>
+                    <img src="img/Luigi.jpg" alt="error!">
+                    <h3>Luigi</h3>
+                    <span>CEO</span>
+                </div>
+                <div>
+                    <img src="img/Matheus.jpg" alt="error!">
+                    <h3>Matheus</h3>
+                    <span>CEO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact section -->
+    <section class="contact-section" id="contact-section">
+        <div class="contact-section-grid">
+            <div class="contact-section-item">
+                <img src="img/logo.png" alt="">
+            </div>
+            <div class="contact-section-item" action="https://formsubmit.co/pedro.bedeschi.nicastro@gmail.com" method="POST">
+                <h2>Entre em Contato</h2>
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="Nome" placeholder="Seu Nome">
+                <label for="lastname">Sobrenome</label>
+                <input type="text" id="lastname" name="Sobrenome" placeholder="Seu Sobrenome">
+                <label for="email">Seu email</label>
+                <input type="text" id="email" name="Email" placeholder="Seu email">
+                <label for="mensage">Mensagem*</label>
+                <textarea name="Mensagem" id="mensage" placeholder="Digite sua Mensagem"></textarea>
+                <input type="submit" class="contact-section-item-btn" >
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-item">
+                <span><a href="#"><img class="logofooter" src="img/logopng.png" alt=""></a></span>
+            </div>
+            <hr>
+            <div class="footer-item">
+                <span>CNPJ: 00.033.755/0001-92</span><br>
+                <span>TELEFONE: (12) 99731-4956</span><br>
+                <span><a href="https://www.instagram.com/escolamaximussjc/"><img src="img/instagram-icon.png" alt="error!"></a><a href="https://twitter.com/escola_maximus"><img src="img/twitter-icon.png" alt="error!"></a></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
